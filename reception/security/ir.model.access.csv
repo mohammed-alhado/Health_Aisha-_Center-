@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hms_reception,hms.reception,model_hms_reception,,1,1,1,1
+access_hms_doctor,hms.doctor,model_hms_doctor,,1,1,1,1
+access_hms_image,hms.image,model_hms_image,,1,1,1,1
+access_hms_surgery,hms.surgery,model_hms_surgery,,1,1,1,1
+access_hms_dental,hms.dental,model_hms_dental,,1,1,1,1
+
+access_hms_expense,hms.expense,model_hms_expense,,1,1,1,1
+access_hms_request_expense,hms.request.expense,model_hms_request_expense,,1,1,1,1
+access_hms_patient,hms.patient,model_hms_patient,,1,1,1,1

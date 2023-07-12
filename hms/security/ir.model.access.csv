@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hms_labtest,hms.labtest,model_hms_labtest,,1,1,1,1
+access_hms_lab_department,hms.lab.department,model_hms_lab_department,,1,1,1,1
+access_hms_lab_criteria,hms.lab.criteria,model_hms_lab_criteria,,1,1,1,1
+access_hms_lab_unit,hms.lab.unit,model_hms_lab_unit,,1,1,1,1
+access_criteria_result_choose,criteria.result.choose,model_criteria_result_choose,,1,1,1,1
+
+access_hms_labtest_request,hms.labtest.request,model_hms_labtest_request,,1,1,1,1
+access_hms_many_testtypes,criteria.result.choose,model_hms_many_testtypes,,1,1,1,1
+access_hms_lab_resultcriteria,hms.lab.resultcriteria,model_hms_lab_resultcriteria,,1,1,1,1
+
+

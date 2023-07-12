@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <record id="services_tree" model="ir.ui.view">
+      <field name="name">services tree</field>
+      <field name="model">services.services</field>
+      <field name="arch" type="xml">
+        <tree string="Medical Services">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- Services Form -->
+    <record id="services_form" model="ir.ui.view">
+      <field name="name">services form</field>
+      <field name="model">services.services</field>
+      <field name="arch" type="xml">
+        <form string="Medical Services">
+          <sheet>
+          <group>    
+              <group>
+                <field name="name"/>
+                <field name="fees"/>
+              </group>
+              
+            <group>
+              <!-- <field name="service_type"/> -->
+              <!-- <field name="doctor_dues"/> -->
+            </group>
+          </group>
+          <group>
+              <field name="comment"/>
+            </group>
+        </sheet>
+      </form>
+      </field>
+    </record>   
+
+   <record id="action_Service" model="ir.actions.act_window">
+            <field name="name">Medical Services</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">services.services</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new Medical Services!
+              </p>
+            </field>
+        </record>
+
+     <menuitem
+      id="menu_services"
+      parent="hms.hms_configuration_services"
+      name="Medical Services"
+      sequence="195"/>   
+    <menuitem 
+      name="Medical Services" 
+      id="menu_child_services" 
+      parent="menu_services" 
+      action="action_Service"/>
+  </data>
+</odoo>

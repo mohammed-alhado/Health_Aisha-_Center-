@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hms_dental_service,hms.dental.service,model_hms_dental_service,,1,1,1,1
+ccess_request_dental,hms.request.dental,model_hms_request_dental,,1,1,1,1
+access_dental_service_line,dental.service.line,model_dental_service_line,,1,1,1,1

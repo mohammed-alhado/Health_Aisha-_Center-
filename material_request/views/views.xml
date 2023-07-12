@@ -1,0 +1,102 @@
+<odoo>
+    <data>
+        <record id="material_request_form" model="ir.ui.view">
+            <field name="name">Material Request</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <form string="Material Request">
+                    <header>
+                      <button name="set_done" string="Done" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}" groups="material_request.group_material_admin"/>
+                      <button name="set_approve" string="Approve" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}" groups="material_request.group_material_approvel"/>
+                      <button name="set_reject" string="Reject" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'approved')]}" groups="material_request.group_material_admin"/>
+                      
+                      <field name="state" widget="statusbar"  statusbar_visible="draft,rejected,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                           <label for="name" string="Request Number #"/>
+                            <h1>
+                                <field name="name" readonly="True"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                              <field name="department"/>
+                              <field name="requester"/>
+                            </group>
+                            <group>
+                              <field name="request_type"/>
+                              <field name="department_id"/>
+                            </group>
+                        </group>
+                      
+                        <notebook>
+                            <page name="material_line" string="Material Lines">
+                                <field name="material_line">
+                                    <tree editable="top">
+                                        <field name="item_id"/>
+                                        <field name="qty"/>
+                                        <field name="uom"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="note" string="Notes">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">         
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="material_request_tree" model="ir.ui.view">
+            <field name="name">Material Request</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <tree string="Material Request">
+                    <field name="name"/>
+                    <field name="department"/>
+                    <field name="requester"/>
+                    <field name="request_type"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.sequence" id="material_request_seq">
+            <field name="name">material request seq</field>
+            <field name="code">material.request</field>
+            <field name="prefix">M.R/%(range_year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False" />
+        </record>   
+
+       <record id="material_request_action" model="ir.actions.act_window">
+            <field name="name">Material Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">material.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create First Material Request
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+          id="material_menu"
+          name="Material Request"/>  
+
+        <menuitem 
+          name="Material Request"
+          id="material_menu_child" 
+          parent="material_menu"
+          action="material_request_action"/>
+    </data>
+</odoo>

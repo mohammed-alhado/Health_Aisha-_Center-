@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+        <record id="cashier_cheque_form" model="ir.ui.view">
+            <field name="name">Patients Cheques</field>
+            <field name="model">cashier.cheque</field>
+            <field name="arch" type="xml">
+                <form string="Cheques">
+                    <header>
+                        <button name="register_payment" string="Register Cheque Payment" type="object" class="oe_highlight" attrs="{'invisible': [('cheque_state', '!=', 'waiting')]}"/>
+                        <button name="reject_cheque" string="Reject" type="object" class="oe_highlight" attrs="{'invisible': [('cheque_state', '!=', 'waiting')]}"/>
+                        <field name="cheque_state" widget="statusbar"  statusbar_visible="waiting,paid,rejected"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                           <label for="name" string="Cheque Number #"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                              <field name="bank_holder"/>
+                              <field name="cheque_date"/>
+                            </group>
+                            <group>
+                              <field name="amount"/>
+                              <field name="invoice_id"/>
+                              <field name="cashier"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="account_line_page" string="Accounts Lines">
+                                <field name="account_line">
+                                    <tree editable="bottom">
+                                        <field name="account_id"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="note" string="Notes">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">         
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="cashier_cheque_tree" model="ir.ui.view">
+            <field name="name">Cheques</field>
+            <field name="model">cashier.cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Cheques">
+                    <field name="name"/>
+                    <field name="cheque_date"/>
+                    <field name="amount"/>
+                    <field name="invoice_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="cheque_action" model="ir.actions.act_window">
+            <field name="name">Pateints Cheques</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cashier.cheque</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Patients Cheques
+                </p>
+            </field>
+        </record>
+<!-- 
+        <menuitem 
+          name="Cheque"
+          id="cheque_menu_child" 
+          parent="cashier_menu"
+          action="cheque_action"/> -->
+    </data>
+</odoo>

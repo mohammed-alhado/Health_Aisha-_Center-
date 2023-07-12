@@ -1,0 +1,191 @@
+<odoo>
+  <data>
+    <record id="hms_labtest_form" model="ir.ui.view">
+      <field name="name">Labtest form</field>
+      <field name="model">hms.labtest</field>
+      <field name="arch" type="xml">
+        <form string="Labtest">
+          <sheet>
+            <group> 
+              <group>
+                <field name="name"/>
+                <field name="department"/>
+              </group>
+              <group>
+                <field name="test_charge"/>
+                <field name="code"/>
+              </group>
+            </group>
+            <notebook>
+              <page name="criteria_line" string="Criteria">
+                <field name="criteria_line" nolabel="1">
+                  <tree string="List of Test Criteria" editable="bottom">
+                   <field name="sequence"/>
+                   <field name="name"/>
+                   <field name="multi_chooses" widget="many2many_tags"/>
+                   <field name="default_result"/>
+                   <field name="normal_range"/>
+                   <field name="units"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="hms_labtest_tree" model="ir.ui.view">
+      <field name="name">labtest tree</field>
+      <field name="model">hms.labtest</field>
+      <field name="arch" type="xml">
+        <tree string="Labtest List" >
+          <field name="name"/>
+          <field name="department"/>
+          <field name="test_charge"/>
+          <field name="code"/>
+          <field name="is_available" invisible='True'/>
+          <button confirm="Are you sure you want to mark this test type as available?" name="set_to_available" string="Available" type="object" class="oe_highlight" attrs="{'invisible': [('is_available', '=', True)]}"/>
+          <button confirm="Are you sure you want to mark this test type as un available?" name="set_to_unavailable" string="Un Available" type="object" attrs="{'invisible': [('is_available', '!=', True)]}"/>
+        </tree>
+      </field>
+    </record>  
+
+    <record id="action_labtest" model="ir.actions.act_window">
+      <field name="name">Lab Test</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.labtest</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new Lab Test!
+        </p>
+      </field>
+    </record>
+ 
+     <menuitem
+      id="labtest_menu"
+      parent="hms.hms_configuration_services"
+      name="Lab Test Type"
+      action="action_labtest"/>
+
+
+
+      <record id="hms_lab_units_filter" model="ir.ui.view">
+        <field name="name">Lab Units</field>
+        <field name="model">hms.lab.unit</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Units">
+                <separator orientation="vertical"/>
+                    <field name="name"/>
+            </search>
+        </field>
+      </record>
+
+      <record model="ir.ui.view" id="hms_lab_units_tree">
+        <field name="name">Lab Units</field>
+        <field name="model">hms.lab.unit</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string='Lab Units' editable="bottom">
+              <field name="name"/>  
+            </tree>
+        </field>
+      </record>
+
+      <record id="hms_lab_units_action_tree" model="ir.actions.act_window">
+        <field name="name">Lab Units</field>
+        <field name="res_model">hms.lab.unit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Click to add a new lab test units.
+          </p>
+        </field>
+      </record>
+
+      <menuitem action="hms_lab_units_action_tree" id="hms_lab_units_conf_list" parent="hms.hms_configuration_services" sequence="1"/>
+
+      <record model="ir.ui.view" id="hms_lab_test_department_tree">
+        <field name="name">Labtest Departments</field>
+        <field name="model">hms.lab.department</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string='Lab Test Departments' editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+      </record>
+
+      <record id="view_lab_test_department_filter" model="ir.ui.view">
+        <field name="name">Labtest Departments</field>
+        <field name="model">hms.lab.department</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Departments">
+                <separator orientation="vertical"/>
+                <field name="name"/>
+            </search>
+        </field>
+      </record>
+
+      <record id="hms_labtest_department_action_tree" model="ir.actions.act_window">
+        <field name="name">Lab Test Departments</field>
+        <field name="res_model">hms.lab.department</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Click to add a new Lab Test department.
+          </p>
+        </field>
+      </record>
+
+      <menuitem action="hms_labtest_department_action_tree" id="hms_labtest_department_menu" parent="hms.hms_configuration_services" sequence="2"/>
+
+
+      <record model="ir.ui.view" id="hms_lab_test_Chooses_tree">
+        <field name="name">Labtest Chooses</field>
+        <field name="model">criteria.result.choose</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string='Lab Test Chooses' editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+      </record>
+
+      <!-- <record id="view_lab_choose_filter" model="ir.ui.view">
+        <field name="name">Labtest Departments</field>
+        <field name="model">hms.lab.department</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Departments">
+                <separator orientation="vertical"/>
+                <field name="name"/>
+            </search>
+        </field>
+      </record> -->
+
+      <record id="hms_labtest_chooses_action_tree" model="ir.actions.act_window">
+        <field name="name">Lab Test Chooses</field>
+        <field name="res_model">criteria.result.choose</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Click to add a new Lab Test Chooses.
+          </p>
+        </field>
+      </record>
+
+      <menuitem name="Chooses" action="hms_labtest_chooses_action_tree" id="hms_labtest_chooses_menu" parent="hms.hms_configuration_services" sequence="3"/>
+  </data>
+</odoo>

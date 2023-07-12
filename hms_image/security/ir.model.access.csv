@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hms_image,hms.image,model_hms_image,,1,1,1,1
+ccess_hms_image_department,hms.image.department,model_hms_image_department,,1,1,1,1
+access_hms_request_image,hms.request.image,model_hms_request_image,,1,1,1,1

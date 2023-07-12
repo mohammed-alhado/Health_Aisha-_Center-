@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_service_shippment" name="Shippment"  parent="menu_service" action="act_open_shippment_view" sequence="3"/>
+    </data>
+</odoo>

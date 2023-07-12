@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_cheque_wizard" model="ir.ui.view">
+           <field name="name">cheque.wizard</field>
+           <field name="model">cheque.wizard</field>
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+               <form string="Register Cheque">
+                    <group>
+                        <field name="invoice_id" invisible="1"/>
+                        <field name="cheque_number"/>
+                        <field name="bank_holder"/>
+                        <field name="amount"/>
+                        <field name="amount_due"/>
+                        <field name="effected_date"/>
+                        <field name="cheque_bank"/>
+                        <field name="note"/>
+                        <field name="line_account" />
+                        <!-- attrs="{'invisible':[('amount','>','5')]}" -->
+                    </group>
+                    <footer>
+                        <button name="register_cheque" string="Validate" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                    </footer>
+               </form>
+           </field>
+        </record>
+
+    
+    </data>
+</odoo>

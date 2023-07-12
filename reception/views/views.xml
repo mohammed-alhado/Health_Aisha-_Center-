@@ -1,0 +1,199 @@
+<odoo>
+  <data>
+    <record id="doctor_tree" model="ir.ui.view">
+      <field name="name">Doctors list</field>
+      <field name="model">hms.doctor</field>
+      <field name="arch" type="xml">
+        <tree string="Doctors" editable="top">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+   <record id="action_doctor" model="ir.actions.act_window">
+      <field name="name">Doctors</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.doctor</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new Doctor record
+        </p>
+      </field>
+    </record>
+
+
+    <record id="image_tree" model="ir.ui.view">
+      <field name="name">images list</field>
+      <field name="model">hms.image</field>
+      <field name="arch" type="xml">
+        <tree string="Images" editable="top">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+   <record id="action_image" model="ir.actions.act_window">
+      <field name="name">Images</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.image</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new Image record
+        </p>
+      </field>
+    </record>
+
+
+    <record id="surgery_tree" model="ir.ui.view">
+      <field name="name">surgery list</field>
+      <field name="model">hms.surgery</field>
+      <field name="arch" type="xml">
+        <tree string="Surgery" editable="top">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+   <record id="action_surgery" model="ir.actions.act_window">
+      <field name="name">Surgery</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.surgery</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new Surgery record
+        </p>
+      </field>
+    </record>
+
+    <record id="dental_tree" model="ir.ui.view">
+      <field name="name">Dental list</field>
+      <field name="model">hms.dental</field>
+      <field name="arch" type="xml">
+        <tree string="Dental" editable="top">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+   <record id="action_dental" model="ir.actions.act_window">
+      <field name="name">Dental</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.dental</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new dental record
+        </p>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="hms_clinic_tree">
+      <field name="name">Services</field>
+      <field name="model">hms.reception</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+          <tree string='Services' editable="top">
+            <field name="name"/> 
+            <field name="patient"/> 
+            <field name="clinic"/> 
+            <field name="clinic_amount" sum="Total" force_save="1"/> 
+            <field name="image"/>
+            <field name="image_amount" sum="Total" force_save="1"/>
+            <field name="surgery_service"/>
+            <field name="surgery_amount" sum="Total" force_save="1"/>
+            <field name="dental" widget="many2many_tags"/>
+            <field name="dental_amount" sum="Total" force_save="1"/>
+            <field name="lab" widget="many2many_tags"/>
+            <field name="lab_amount" sum="Total" force_save="1"/>
+            <field name="subtotal" sum="Total"/>
+            <button name="add_serivce" string="Add" type="object" class="oe_highlight"/>  
+          </tree>
+      </field>
+    </record>
+    <record id="request_service_search" model="ir.ui.view">
+      <field name="name">filter requests</field>
+      <field name="model">hms.reception</field>
+      <field name="arch" type="xml">
+          <search string="Search requests">
+              <separator orientation="vertical"/>
+              <field name="name" string="Request #"/>
+              <field name="patient" string="Patient"/>
+              <field name="request_time" string="Period"/>
+              <separator/>
+              <filter string="Today"  name="today" domain="[('request_time', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('request_time', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+              <filter name="request_time" string="Date" date="request_time"/>
+              <group expand="0" string="Group By..." colspan="11" col="11">
+                  <filter string="Request Date" name="request_time" context="{'group_by': 'request_time'}"/>
+              </group>
+          </search>
+        </field>
+      </record>
+
+    <record id="hms_clinic_action" model="ir.actions.act_window">
+      <field name="name">Services</field>
+      <field name="res_model">hms.reception</field>
+      <field name="view_mode">tree</field>
+      <field name="domain">[]</field>
+       <field name="context">{"search_default_today":1}</field>
+      <field name="view_id" eval="False"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Request a new services.
+        </p>
+      </field>
+    </record>
+    <record model="ir.sequence" id="request_seq">
+      <field name="name">Request seqe</field>
+      <field name="code">hms.reception</field>
+      <!-- <field name="prefix">%(day)s/</field> -->
+      <field name="use_date_range">True</field>
+      <field name="company_id" eval="False" />
+    </record>
+
+
+
+    <menuitem
+      id="clinic_menu"
+      name="Clinic"/> 
+
+    <menuitem
+      id="service_menu"
+      name="Services"
+      parent = "clinic_menu"
+      sequence="1"
+      action="hms_clinic_action"/>
+    <menuitem
+      id="config_menu"
+      name="Configuration"
+      parent = "clinic_menu"
+      sequence="10"/>    
+    <menuitem 
+      name="Doctors" 
+      id="menu_doctor" 
+      parent="config_menu" 
+      action="action_doctor"/>
+    <menuitem 
+      name="Image" 
+      id="menu_image" 
+      parent="config_menu" 
+      action="action_image"/>
+    <menuitem 
+      name="Surgery" 
+      id="menu_surgery" 
+      parent="config_menu" 
+      action="action_surgery"/>
+    <menuitem 
+      name="Dental" 
+      id="menu_dental" 
+      parent="config_menu" 
+      action="action_dental"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_pos_customer_pricelist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-13 07:16+0000\n"
+"PO-Revision-Date: 2021-12-13 07:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/js/bi_pos_customer_pricelist.js:0
+#, python-format
+msgid "A Customer Name Is Required"
+msgstr "Een klantnaam is vereist"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/js/bi_pos_customer_pricelist.js:0
+#, python-format
+msgid "Error: Could not Save Changes"
+msgstr "Fout: kon wijzigingen niet opslaan"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/xml/bi_pos_customer_pricelist.xml:0
+#, python-format
+msgid "N/A"
+msgstr "Nvt"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/xml/bi_pos_customer_pricelist.xml:0
+#, python-format
+msgid "None"
+msgstr "Geen"
+
+#. module: bi_pos_customer_pricelist
+#: model:ir.model,name:bi_pos_customer_pricelist.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Verkooppunt bestellingen"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/xml/bi_pos_customer_pricelist.xml:0
+#: code:addons/bi_pos_customer_pricelist/static/src/xml/bi_pos_customer_pricelist.xml:0
+#, python-format
+msgid "Pricelist"
+msgstr "Prijslijst"
+
+#. module: bi_pos_customer_pricelist
+#. openerp-web
+#: code:addons/bi_pos_customer_pricelist/static/src/js/bi_pos_customer_pricelist.js:0
+#, python-format
+msgid "Your Internet connection is probably down."
+msgstr "Uw internetverbinding is waarschijnlijk niet beschikbaar."

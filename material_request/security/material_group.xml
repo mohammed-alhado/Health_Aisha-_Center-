@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="res.groups" id="group_material_approvel">
+        <field name="name">Approve material request</field>
+    </record>
+    <record model="res.groups" id="group_material_admin">
+        <field name="name">Manage material request</field>
+    </record>
+	 
+</odoo>

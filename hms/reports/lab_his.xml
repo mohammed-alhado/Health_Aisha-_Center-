@@ -1,0 +1,112 @@
+<odoo>
+	<report 
+		string="Labtest Result Report"
+	 	id="labtest_report" 
+	 	model="hms.labtest.request" 
+    	name="hms.labtest_report_temp" 
+     	file="hms.labtest_report_temp"
+     	menu="False" 
+     	report_type="qweb-pdf"/>
+
+	<template id="labtest_report_temp">
+    	<t t-call="web.basic_layout">
+    		<t t-set="company" t-value="res_company"/>
+	   		<div class="page container-fluid" style="font-family: Arial; page-break-inside: avoid;">
+	   			<div class="row">
+	   				<div class="col-4">
+	   					<img src="./logo.png" alt="Logo" style="width: 100px; height: 100px;"/>
+	   				</div>
+	   				<div class="col-4">
+					<h1 style="text-align:center; font-family: Amiri; font-weight: bold; width: 290px;">
+						<t t-esc="company.name"/>
+					</h1>
+					<h4 style="text-align:center; font-family: Amiri; width: 290px; font-weight: bold;">صالحة جادين شمال</h4>
+	   				</div>
+	   				<div class="col-4 text-right">
+	   					<img src="./logo.png" alt="Logo" style="width: 100px; height: 100px;"/>
+	   				</div>
+	   				
+	   			</div>
+	   			<br/>
+	   			<div class="center-left">
+	   				<h5>Labtest Result Report</h5>
+	   			</div><br/>
+	   			<t t-foreach="docs" t-as="o">
+		   			<div class="row">
+		   				<div class="col-2" t-if="o.name">
+		   					<strong>Lab Test#:</strong>
+		   					<h6>
+		   						<span t-field="o.name"/>
+		   					</h6>
+		   				</div>
+		   				<div class="col-2" t-if="o.patient">
+		   					<strong>Patient:</strong>
+		   					<h6>
+		   						<span t-field="o.patient"/>
+		   					</h6>
+		   				</div>
+		   				<div class="col-2" t-if="o.patient">
+		   					<strong>Age:</strong>
+		   					<h6>
+		   						<span t-field="o.age"/>
+		   					</h6>
+		   				</div>
+		   				<div class="col-2" t-if="o.patient">
+		   					<strong>Phone:</strong>
+		   					<h6>
+		   						<span t-field="o.phone"/>
+		   					</h6>
+		   				</div>
+		   				<div class="col-2" t-if="o.date_analysis">
+		   					<strong>Analysis Date:</strong>
+		   					<h6><span t-field="o.date_analysis"/></h6>
+		   				</div>
+		   			</div><br/>
+
+		   			<t t-foreach="o.lab_test" t-as="test">
+			           <table class="table table-sm table-responsive{-sm | -md | -lg -xl} table-striped" style="page-break-inside: avoid;">
+		                    <thead height="10">
+		                    	<tr style="padding: 200px; page-break-inside: avoid;">
+			                        <th t-if="test.test_type" style="page-break-inside: avoid;" class="center">
+					                    <strong style="page-break-inside: avoid;">Test :</strong>
+					                    <span class="m-0" t-field="test.test_type" style="page-break-inside: avoid;"/>
+					                  </th>
+			                    </tr>
+			                    <tr style="padding: 8px; page-break-inside: avoid;">
+			                        <th style="font-size: 12px; page-break-inside: avoid;" class="text-right">TESTS</th>
+			                        <th style="font-size: 12px; page-break-inside: avoid;" class="text-center">RESULT</th>
+			                        <th style="font-size: 12px; page-break-inside: avoid;" class="text-center">NORMAL RANGE</th>
+			                        <th style="font-size: 12px; page-break-inside: avoid;" class="text-center">UNITS</th>
+			                    </tr>
+			               </thead>
+			               <tbody>
+			                    <tr t-foreach="test.lab_test_criteria" t-as="l" height="10" style="page-break-inside: avoid; padding: 4px">
+			                        <td style="height: 10px; page-break-inside: avoid;font-size: 12px;" class="text-right" t-if="l.name">
+			                            <span t-field="l.name"/>
+			                        </td>
+			                        <td style="height: 10px; page-break-inside: avoid;font-size: 12px;" class="text-center" t-if="l.result">
+			                            <span t-field="l.result"/>
+			                        </td>
+			                        <td style="height: 10px; page-break-inside: avoid; ;font-size: 12px;" class="text-center" t-if="l.normal_range">
+			                            <span t-field="l.normal_range"/>
+			                        </td>
+			                        <td style="height: 10px; page-break-inside: avoid;font-size: 12px;" class="text-center" t-if="l.normal_range == ''" >
+			                            <p></p>
+			                        </td>
+			                        <td style="height: 10px; page-break-inside: avoid;font-size: 12px;" class="text-center" t-if="l.units">
+			                            <span t-field="l.units.name"/>
+			                        </td>
+			                    </tr>
+			                </tbody>
+			           </table>
+			       </t>
+			       <p style="text-align: left; align-content:left;">
+		            	Processed By:
+		            	<t t-esc="o.env.user.name"/><br/>
+		            </p>
+		        </t>
+	   		</div>
+		   	
+	    </t>
+	</template>
+</odoo>

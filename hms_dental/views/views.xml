@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <record id="dental_services_tree" model="ir.ui.view">
+      <field name="name">dental services tree</field>
+      <field name="model">hms.dental.service</field>
+      <field name="arch" type="xml">
+        <tree string="Dental Services">
+          <field name="name"/>
+          <field name="fees"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="dental_services_form" model="ir.ui.view">
+      <field name="name">services form</field>
+      <field name="model">hms.dental.service</field>
+      <field name="arch" type="xml">
+        <form string="Medical Services">
+          <sheet>
+          <group>    
+              <group>
+                <field name="name"/>
+                <field name="fees"/>
+              </group>
+              
+            <group>
+              <!-- <field name="service_type"/> -->
+              <!-- <field name="doctor_dues"/> -->
+            </group>
+          </group>
+          <group>
+              <field name="comment"/>
+            </group>
+        </sheet>
+      </form>
+      </field>
+    </record>   
+
+   <record id="action_dental_service" model="ir.actions.act_window">
+            <field name="name">Dental Services</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.dental.service</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create  a new Dental Service!
+              </p>
+            </field>
+        </record>
+
+     <menuitem
+      id="menu_dental_services"
+      parent="hms.hms_configuration_services"
+      name="Dental Services"
+      sequence="195"/>   
+    <menuitem 
+      name="Dental Services" 
+      id="menu_child_dental_services" 
+      parent="menu_dental_services" 
+      action="action_dental_service"/>
+  </data>
+</odoo>

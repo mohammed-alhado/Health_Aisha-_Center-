@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report string="Cashier Invoice" id="action_report_cashier_invoice" model="create.service.wizard" 
+     name="reception.cashier_invoice_report_id" 
+     file="reception.cashier_invoice_report_id"
+     menu="False" 
+     report_type="qweb-pdf"/>
+
+    <template id="cashier_invoice_report_id">
+        <t t-call="web.html_container">
+            <!-- <t t-set="company" t-value="res_company"/> -->
+            <t t-call="web.basic_layout">
+        <div style="width:100%; text-align: center;">
+
+        <t t-set="company" t-value="res_company"/>
+        <t t-set="total" t-value="0"/>
+        <t t-foreach="docs" t-as="doc">
+        <head>
+        <meta charset="UTF-8"/>
+        <title>Receipt</title>
+        </head>
+            <body>
+                <div style="font-family: 'Amiri';">
+                    <img src="./logo.png" alt="Logo"
+                        style="max-width: inherit;
+                                width: inherit;
+                                text-align: center;"/>
+                    <p style="text-align: center;
+                            align-content: center;">
+                        <t t-esc="company.name"/>
+                    </p>
+                    <table style="border-top: 1px solid black;
+                               border-collapse: collapse;
+                               margin-left: auto;
+                               margin-right: auto;
+                               width:100%;">
+                        <thead>
+                            <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;"> 
+                                    <t t-esc="doc.request.name"/>
+                                </th>
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    ايصال رقم
+                                </th>
+                            </tr>
+                            <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <t 
+                                        t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                </th>
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    التاريخ
+                                </th>
+                            </tr>
+                            <tr 
+                                style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <t t-esc="doc.patient.name"/>
+                                </th>
+                                <th class="quantity">
+                                    الاسم
+                                </th>
+                            </tr>
+
+                            <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    القيمة
+                                </th>
+                                <th style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    الخدمة
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.clinic" >
+                                <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.clinic_amount"/>
+                                    </td>
+
+                                    <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.clinic.name"/>
+                                    </td>
+                                </tr>
+                                <t t-set="total" t-value="total+doc.clinic_amount"/>
+
+                            </t>
+                            <t t-if="doc.image">
+                                <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.image_amount"/>
+                                    </td>
+
+                                    <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.image.name"/>
+                                        
+                                    </td>
+                                </tr>
+                                <t t-set="total" t-value="total+doc.image_amount"/>
+
+                            </t>
+                            <t t-if="doc.surgery_service">
+                                <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.surgery_amount"/>
+                                    </td>
+
+                                    <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.surgery_service.name"/>
+                                        
+                                    </td>
+                                </tr>
+                                <t t-set="total" t-value="total+doc.surgery_amount"/>
+
+                            </t>
+                            <t t-foreach="doc.dental" t-as="line">
+                                <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <!-- <t t-esc="line.clinic_amount"/> -->
+                                    </td>
+
+                                    <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="line.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="doc.dental">
+                                <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.dental_amount"/>
+                                </td>
+                                <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        المجموع
+                                </td>
+                            </t>
+                            <t t-set="total" t-value="total+doc.dental_amount"/>
+
+                            
+                            <t t-foreach="doc.lab" t-as="line">
+                                <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <!-- <t t-esc="line.clinic_amount"/> -->
+                                    </td>
+
+                                    <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="line.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="doc.lab">
+                                <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="doc.lab_amount"/>
+                                </td>
+                                <td class="description" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        المجموع
+                                </td>
+                            </t>
+                            <t t-set="total" t-value="total+doc.lab_amount"/>
+
+                           
+                            <tr style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                    <td class="price" style="border-top: 1px solid black;
+                                border-collapse: collapse;">
+                                        <t t-esc="total"/>
+                                    </td>
+
+                                    <th class="description" style="border-top: 1px solid black;
+                                    border-collapse: collapse;">
+                                        المجموع
+                                    </th>
+                                </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="text-align: center;
+                align-content: center;">
+                        Printed By:
+                        <t t-esc="doc.env.user.name"/><br/>
+                        !نتمني لكم الشفاء العاجل
+                    </p>
+                </div>
+            </body>
+        </t>
+    </div>
+                <!--    -->
+            </t>
+        </t>
+    </template>
+</odoo>

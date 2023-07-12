@@ -1,0 +1,91 @@
+<odoo>
+  <data>
+    <record id="doctor_tree" model="ir.ui.view">
+      <field name="name">Doctors list</field>
+      <field name="model">hms.doctor</field>
+      <field name="arch" type="xml">
+        <tree string="Doctors">
+          <field name="name"/>
+          <field name="fees"/>
+          <field name="clinic"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="doctor_form" model="ir.ui.view">
+      <field name="name">doctor form</field>
+      <field name="model">hms.doctor</field>
+      <field name="arch" type="xml">
+        <form string="Doctor data">
+          <sheet>
+          <group>    
+              <group>
+                <field name="name"/>
+                <field name="fees"/>
+              </group>
+              
+            <group>
+              <field name="clinic"/>
+              <!-- <field name="doctor_dues"/> -->
+            </group>
+          </group>
+          <group>
+              <field name="comment"/>
+            </group>
+        </sheet>
+      </form>
+      </field>
+    </record>   
+
+   <record id="action_doctor" model="ir.actions.act_window">
+            <field name="name">Doctors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.doctor</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new Doctor record
+              </p>
+            </field>
+        </record>
+
+     <menuitem
+      id="clinic_menu"
+      parent="hms.hms_configuration_services"
+      name="Clinic"
+      sequence="2"/>   
+    <menuitem 
+      name="Doctors" 
+      id="menu_doctor" 
+      parent="clinic_menu" 
+      action="action_doctor"/>
+
+      <record model="ir.ui.view" id="hms_clinic_tree">
+        <field name="name">clinics</field>
+        <field name="model">hms.clinic</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string='Clinics' editable="bottom">
+              <field name="name"/>  
+            </tree>
+        </field>
+      </record>
+
+      <record id="hms_clinic_action" model="ir.actions.act_window">
+        <field name="name">Clinics</field>
+        <field name="res_model">hms.clinic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Click to add a new clinic department.
+          </p>
+        </field>
+      </record>
+
+      <menuitem action="hms_clinic_action" id="clinic_menu_child" parent="hms_clinic.clinic_menu" sequence="1" name="Clinics"/>
+
+  </data>
+</odoo>

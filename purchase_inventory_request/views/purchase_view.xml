@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_request_form" model="ir.ui.view">
+            <field name="name">purchase.request.form</field>
+            <field name="model">purchase.request</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Request">
+                    <header>
+                        <button name="set_confirm" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+                        <button name="set_cancel" states="draft" string="Cancel" type="object"/>
+
+                        <button  name="set_manager_confirmed" states="confirm" string="Transferred" type="object" class="oe_highlight"/>
+
+                        <button  name="set_done" states="manager_confirm" string="Done" type="object" class="oe_highlight"/>
+                        <button name="set_to_draft" states="canceled" string="Set Draft" type="object" class="oe_highlight"/>
+                        
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,manager_confirm,done,canceled" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="department"/>
+                                <field name="requestor"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name='line' string="Request Line">
+                                <field name="request_line">
+                                    <tree editable="top">
+                                        <field name="product"/>
+                                        <field name="qty"/>
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="note" string="Notes">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+
+        <record id="view_purchase_request_tree" model="ir.ui.view">
+            <field name="name">purchase.request.tree</field>
+            <field name="model">purchase.request</field>
+            <field name="arch" type="xml">
+                <tree string="Request" decoration-danger="state=='canceled'" decoration-success="state=='done'">
+                    <field name="name"/>
+                    <field name="department"/>
+                    <field name="requestor"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+       
+
+        <record model="ir.actions.act_window" id="act_purchase_request_view">
+            <field name="name">Purchase Requests</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Purchase Request
+                </p>
+            </field>
+        </record>
+        
+
+        <record model="ir.sequence" id="seq_purchase_request">
+            <field name="name">Purchase Request</field>
+            <field name="code">purchase.request</field>
+            <field name="prefix">PR</field>
+            <field name="padding">2</field>
+            <field name="use_date_range">True</field>
+        </record>
+
+        <menuitem id="menu_purchase_request" name="Purchase Requests"  parent="purchase.menu_purchase_root" action="act_purchase_request_view" sequence="0"/>
+    </data>
+</odoo>

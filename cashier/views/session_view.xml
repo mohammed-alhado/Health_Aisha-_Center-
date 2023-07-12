@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <record id="cashier_session_form" model="ir.ui.view">
+            <field name="name">Cashier Session</field>
+            <field name="model">cashier.session</field>
+            <field name="arch" type="xml">
+                <form string="Session">
+                    <header>
+                        <button name="close_session" states="in_progress" string="Close Sessoin" type="object"/>
+                        <button name="post_session" states="closed" string="Post Sessoin" type="object" groups="account.group_account_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                           <label for="name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                              <field name="start_time"/>
+                              <field name="end_time"/>
+                              <field name="cashier"/>
+                            </group>
+                            <group>
+                              <field name="total_in_cash"/>
+                              <field name="total_in_bank"/>
+                              <field name="total_amount"/>
+                            </group>
+                        </group>
+                      
+                        <notebook>
+                            <page name="payment_line_page" string="Payments Lines">
+                                <field name="payments_line">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="payment_account"/>
+                                        <field name="amount"/>
+                                        <field name="payment_time"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="note" string="Notes">
+                                <field name="note"/>
+                            </page>
+                            <page name="account_line_page" string="Accounts">
+                                <field name="session_account">
+                                    <tree editable="bottom">
+                                        <field name="account_id"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="journal_line_page" string="Journal">
+                                <field name="sessoin_journal">
+                                    <tree editable="bottom">
+                                        <field name="journal_id"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">         
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="cashier_session_tree" model="ir.ui.view">
+            <field name="name">Session</field>
+            <field name="model">cashier.session</field>
+            <field name="arch" type="xml">
+                <tree string="Sessions" decoration-info="state=='in_progress'" decoration-success="state=='posted'">
+                    <field name="name"/>
+                    <field name="cashier"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="total_in_cash"/>
+                    <field name="total_in_bank"/>
+                    <field name="total_amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.sequence" id="session_seq">
+            <field name="name">session seq</field>
+            <field name="code">cashier.session</field>
+            <field name="prefix">S/%(range_year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False" />
+        </record>   
+
+       <record id="sessoin_action" model="ir.actions.act_window">
+            <field name="name">Sessions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cashier.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Sessoins
+                </p>
+            </field>
+        </record>
+
+        <menuitem 
+          name="Sessoins"
+          id="sessoin_menu_child" 
+          parent="cashier_menu"
+          action="sessoin_action"/>
+    </data>
+</odoo>

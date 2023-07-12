@@ -1,0 +1,108 @@
+<odoo>
+  <data>
+    <record id="appointment_tree" model="ir.ui.view">
+      <field name="name">appointments list</field>
+      <field name="model">hms.appointment</field>
+      <field name="arch" type="xml">
+        <tree string="appointments" decoration-muted="state=='draft'" decoration-info="state=='invoiced'" >
+          <field name="name"/>
+          <field name="patient"/>
+          <field name="clinic"/>
+          <field name="doctor"/>
+          <field name="request_time"/>
+          <field name="state"/>
+          <field name="invoice_state"/>
+          <field name="total_amount"/>
+        </tree>
+      </field>
+    </record>
+    <record id="appointment_search" model="ir.ui.view">
+      <field name="name">filter appointments</field>
+      <field name="model">hms.appointment</field>
+      <field name="arch" type="xml">
+          <search string="Search appointment">
+              <separator orientation="vertical"/>
+              <field name="name" string="appointment #"/>
+              <field name="patient" string="Patient"/>
+              <field name="request_time" string="Period"/>
+              <separator/>
+              <filter name="request_time" string="Date" date="request_time"/>
+              <filter name="invoice_state" string="Paid appointments" domain="[('invoice_state', '=', 'paid')]"/>
+              <filter name="state" string="Invoiced appointments" domain="[('state', '=', 'invoiced')]"/>
+              <filter name="state" string="Completed appointments" domain="[('state', '=', 'completed')]"/>
+              <separator/>
+              <group expand="0" string="Group By..." colspan="11" col="11">
+                  <filter string="State" name="group_state" domain="[]" context="{'group_by':'state'}"/>
+                  <filter string="Clinic" name="group_clinic" domain="[]" context="{'group_by':'clinic'}"/>
+                  <filter string="Doctor" name="group_doctor" domain="[]" context="{'group_by':'doctor'}"/>
+                  <filter string="Appointment Date" name="request_time" context="{'group_by': 'request_time'}"/>
+              </group>
+          </search>
+        </field>
+      </record>
+
+    <record id="appointment_form" model="ir.ui.view">
+      <field name="name">appointment form</field>
+      <field name="model">hms.appointment</field>
+      <field name="arch" type="xml">
+        <form string="appointments">
+          <header>
+            <button name="create_invoice" string="Create Invoice" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+            <!-- <button name="set_to_completed" string="Completed" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'invoiced')]}"/> -->
+            <field name="state" widget="statusbar"  statusbar_visible="draft,invoiced"/>
+          </header>
+          <sheet>
+            <field name="invoice_state" invisible="1"/>
+            <widget name="web_ribbon" title="Paid" attrs="{'invisible': [('invoice_state', '!=', 'paid')]}" bg_color="bg-success"/>
+            <widget name="web_ribbon" title="In Payment" attrs="{'invisible': [('invoice_state', '!=', 'in_payment')]}" bg_color="bg-warning"/>
+            <widget name="web_ribbon" title="Refunded" attrs="{'invisible': [('invoice_state', '!=', 'refunded')]}" bg_color="bg-danger"/>
+            <div> 
+              <h1>
+                <field name="name" readonly="1"/>
+              </h1>
+            </div>
+            <group>    
+              <group>
+                <field name="patient"/>
+                <field name="move_id"/>
+                <field name="request_time"/>
+              </group>
+              <group>
+                <field name="clinic" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                <field name="doctor" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                <field name="fees"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.sequence" id="appointment_seq">
+      <field name="name">appointment seq</field>
+      <field name="code">hms.appointment</field>
+      <field name="prefix">app/%(range_year)s/</field>
+      <field name="padding">4</field>
+      <field name="use_date_range">True</field>
+      <field name="company_id" eval="False" />
+    </record>   
+
+    <record id="action_appointment" model="ir.actions.act_window">
+      <field name="name">Appointments</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hms.appointment</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new Appointment!
+        </p>
+      </field>
+    </record>
+
+     <menuitem
+      id="appointment_menu"
+      parent="hms.hms_general_services"
+      name="Clinic Appointment"
+      sequence="4"
+      action="action_appointment"/>
+  </data>
+</odoo>

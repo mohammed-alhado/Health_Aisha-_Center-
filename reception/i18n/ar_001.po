@@ -1,0 +1,580 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* reception
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20221221\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-23 08:43+0000\n"
+"PO-Revision-Date: 2022-12-23 11:01+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid ""
+"<br/>\n"
+"                        !نتمني لكم الشفاء العاجل"
+msgstr ""
+
+#. module: reception
+#: model:ir.actions.client,name:reception.action_dashboard
+msgid "Account Report"
+msgstr "تقرير الحسابات"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/js/account_asset.js:0
+#, python-format
+msgid "Accounting entries waiting for manual verification"
+msgstr "قيود محاسبة في انتظار التحقق اليدوي"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.hms_clinic_tree
+msgid "Add"
+msgstr "أضف"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: reception
+#: model:ir.actions.report,name:reception.action_report_cashier_invoice
+msgid "Cashier Invoice"
+msgstr "ايصال"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__clinic
+#: model:ir.model.fields,field_description:reception.field_hms_reception__clinic
+#: model:ir.ui.menu,name:reception.clinic_menu
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Clinic"
+msgstr "عيادة"
+
+#. module: reception
+#: model:ir.ui.menu,name:reception.config_menu
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.action_doctor
+msgid "Create a new Doctor record"
+msgstr "قم بانشاء سجل طبيب جديد"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.action_image
+msgid "Create a new Image record"
+msgstr "قم بانشاء خدمة اشعة تصويرية"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.action_surgery
+msgid "Create a new Surgery record"
+msgstr "قم بانشاء خدمة في العملية الصغرى"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.action_dental
+msgid "Create a new dental record"
+msgstr "قم بانشاء خدمة انسان"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.action_expense
+msgid "Create a new expense record"
+msgstr "قم بانشاء مصروف"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Create service"
+msgstr "انشاء خدمة"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_dental__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_expense__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_image__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_reception__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__create_uid
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__create_uid
+msgid "Created by"
+msgstr "تم الانشاء بواسطة"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_dental__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_expense__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_image__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_reception__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__create_date
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__create_date
+msgid "Created on"
+msgstr "تم الانشاء في "
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#: model:ir.ui.menu,name:reception.menu_dashboard
+#, python-format
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.action_dental
+#: model:ir.ui.menu,name:reception.menu_dental
+#: model_terms:ir.ui.view,arch_db:reception.dental_tree
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Dental"
+msgstr "اسنان"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Dental income"
+msgstr "عائدات الاسنان"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_dental__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_expense__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_image__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_reception__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__display_name
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.action_doctor
+#: model:ir.ui.menu,name:reception.menu_doctor
+#: model_terms:ir.ui.view,arch_db:reception.doctor_tree
+msgid "Doctors"
+msgstr "اطباء"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_doctor
+msgid "Doctors records"
+msgstr "اطباء"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__expense
+msgid "Expense"
+msgstr "مصروف"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.action_expense
+#: model:ir.actions.act_window,name:reception.hms_expense_action
+#: model:ir.ui.menu,name:reception.menu_expense
+#: model:ir.ui.menu,name:reception.request_expense_menu
+#: model_terms:ir.ui.view,arch_db:reception.expense_tree
+msgid "Expenses"
+msgstr "مصروفات"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_hms_dental__fees
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__fees
+#: model:ir.model.fields,field_description:reception.field_hms_expense__fees
+#: model:ir.model.fields,field_description:reception.field_hms_image__fees
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__fees
+msgid "Fees"
+msgstr "الرسوم"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Group By..."
+msgstr "تجميع على حسب"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__id
+#: model:ir.model.fields,field_description:reception.field_hms_dental__id
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__id
+#: model:ir.model.fields,field_description:reception.field_hms_expense__id
+#: model:ir.model.fields,field_description:reception.field_hms_image__id
+#: model:ir.model.fields,field_description:reception.field_hms_reception__id
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__id
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__id
+msgid "ID"
+msgstr "رقم المعرف"
+
+#. module: reception
+#: model:ir.ui.menu,name:reception.menu_image
+msgid "Image"
+msgstr "موجات"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Image income"
+msgstr "عائدات الموجات"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.action_image
+#: model_terms:ir.ui.view,arch_db:reception.image_tree
+msgid "Images"
+msgstr "الموجات"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Lab Tests"
+msgstr "فحوصات معملية"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Lab income"
+msgstr "عائدات المعمل"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_dental____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_doctor____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_expense____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_image____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_reception____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense____last_update
+#: model:ir.model.fields,field_description:reception.field_hms_surgery____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل تم في"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_dental__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_expense__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_image__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_reception__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__write_uid
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل تم بواسطة"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_dental__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_expense__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_image__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_reception__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__write_date
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل تم في"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "Logo"
+msgstr "الشعار"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Net"
+msgstr "الصافي"
+
+#. module: reception
+#: code:addons/reception/models/expense.py:0
+#: code:addons/reception/models/models.py:0
+#, python-format
+msgid "New"
+msgstr "جديد"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Patient"
+msgstr "المريض"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Patient Name"
+msgstr "المريض"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__patient
+#: model:ir.model.fields,field_description:reception.field_hms_reception__patient
+msgid "Patient name"
+msgstr "المريض"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Period"
+msgstr "فترة"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/js/account_asset.js:0
+#, python-format
+msgid "Posted"
+msgstr "مُرحل"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "Printed By:"
+msgstr "طبع بواسطة :"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Request #"
+msgstr "طلب #"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.hms_expense_tree
+msgid "Request Expenses"
+msgstr "طلب مصروفات"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__request
+msgid "Request Name"
+msgstr "اسم الطلب"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.hms_clinic_action
+msgid "Request a new services."
+msgstr "طلب خدمة"
+
+#. module: reception
+#: model_terms:ir.actions.act_window,help:reception.hms_expense_action
+msgid "Request expense."
+msgstr "طلب مصروف"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "Save and print"
+msgstr "حفظ و طباعة"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Search requests"
+msgstr "البحث عن الطلبات"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.hms_clinic_action
+#: model:ir.ui.menu,name:reception.service_menu
+#: model_terms:ir.ui.view,arch_db:reception.hms_clinic_tree
+msgid "Services"
+msgstr "الخدمات"
+
+#. module: reception
+#: model:ir.actions.act_window,name:reception.action_surgery
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__surgery_service
+#: model:ir.model.fields,field_description:reception.field_hms_reception__surgery_service
+#: model:ir.ui.menu,name:reception.menu_surgery
+#: model_terms:ir.ui.view,arch_db:reception.surgery_tree
+msgid "Surgery"
+msgstr "العملية الصغرى"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_hms_reception__request_time
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__request_time
+msgid "Time of Request"
+msgstr "تاريخ الطلب"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.request_service_search
+msgid "Today"
+msgstr "اليوم"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.hms_clinic_tree
+#: model_terms:ir.ui.view,arch_db:reception.hms_expense_tree
+msgid "Total"
+msgstr "المجموع"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Total Expenses"
+msgstr "مجموع المصروفات"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "Total Income"
+msgstr "مجموع الدخل"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/js/account_asset.js:0
+#, python-format
+msgid "Unposted"
+msgstr "غير مرحل"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__lab_amount
+#: model:ir.model.fields,field_description:reception.field_hms_reception__clinic_amount
+#: model:ir.model.fields,field_description:reception.field_hms_reception__dental_amount
+#: model:ir.model.fields,field_description:reception.field_hms_reception__image_amount
+#: model:ir.model.fields,field_description:reception.field_hms_reception__lab_amount
+#: model:ir.model.fields,field_description:reception.field_hms_request_expense__amount
+msgid "amount"
+msgstr "المبلغ"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__clinic_amount
+msgid "clinic amount"
+msgstr "مبلغ العيادة"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "clinic income"
+msgstr "عائدات العيادة"
+
+#. module: reception
+#: model:ir.model,name:reception.model_create_service_wizard
+msgid "create.service.wizard"
+msgstr ""
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__dental
+#: model:ir.model.fields,field_description:reception.field_hms_reception__dental
+msgid "dental"
+msgstr "اسنان"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__dental_amount
+msgid "dental amount"
+msgstr "المبلغ"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_dental
+msgid "dental records"
+msgstr "اسنان"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_expense
+msgid "expenses records"
+msgstr "سجلات المصروفات"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "image"
+msgstr "موجات"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_image
+msgid "images records"
+msgstr "سجلات الموجات"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__image
+#: model:ir.model.fields,field_description:reception.field_hms_reception__image
+msgid "imaging"
+msgstr "موجات"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__image_amount
+msgid "imaging amount"
+msgstr "المبلغ"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__lab
+#: model:ir.model.fields,field_description:reception.field_hms_reception__lab
+msgid "lab"
+msgstr "معمل"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_hms_dental__name
+#: model:ir.model.fields,field_description:reception.field_hms_doctor__name
+#: model:ir.model.fields,field_description:reception.field_hms_expense__name
+#: model:ir.model.fields,field_description:reception.field_hms_image__name
+#: model:ir.model.fields,field_description:reception.field_hms_surgery__name
+msgid "name"
+msgstr "الاسم"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_request_expense
+msgid "request expenses"
+msgstr "طلب مصروفات"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_reception
+msgid "services reception"
+msgstr "الخدمات"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_hms_reception__subtotal
+msgid "sum"
+msgstr "المجموع"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.view_create_service_wizard
+msgid "surgery"
+msgstr "العملية الصغرى"
+
+#. module: reception
+#: model:ir.model.fields,field_description:reception.field_create_service_wizard__surgery_amount
+#: model:ir.model.fields,field_description:reception.field_hms_reception__surgery_amount
+msgid "surgery amount"
+msgstr "المبلغ"
+
+#. module: reception
+#: model:ir.model,name:reception.model_hms_surgery
+msgid "surgery records"
+msgstr "سجلات العمليات الصغرى"
+
+#. module: reception
+#. openerp-web
+#: code:addons/reception/static/src/xml/template.xml:0
+#, python-format
+msgid "surgery service"
+msgstr "خدمات العملية الصغرى"
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "الاسم"
+msgstr ""
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "التاريخ"
+msgstr ""
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "الخدمة"
+msgstr ""
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "القيمة"
+msgstr ""
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "المجموع"
+msgstr ""
+
+#. module: reception
+#: model_terms:ir.ui.view,arch_db:reception.cashier_invoice_report_id
+msgid "ايصال رقم"
+msgstr ""

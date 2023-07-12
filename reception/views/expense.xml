@@ -1,0 +1,91 @@
+<odoo>
+	<data>
+		<record id="expense_tree" model="ir.ui.view">
+	      <field name="name">Expenses list</field>
+	      <field name="model">hms.expense</field>
+	      <field name="arch" type="xml">
+	        <tree string="Expenses" editable="top">
+	          <field name="name"/>
+	          <field name="fees"/>
+	        </tree>
+	      </field>
+	    </record>
+
+	   <record id="action_expense" model="ir.actions.act_window">
+	      <field name="name">Expenses</field>
+	      <field name="type">ir.actions.act_window</field>
+	      <field name="res_model">hms.expense</field>
+	      <field name="view_mode">tree</field>
+	      <field name="help" type="html">
+	        <p class="o_view_nocontent_smiling_face">
+	          Create a new expense record
+	        </p>
+	      </field>
+	    </record>
+
+	    <record model="ir.ui.view" id="hms_expense_tree">
+	      <field name="name">clinics</field>
+	      <field name="model">hms.request.expense</field>
+	      <field name="type">tree</field>
+	      <field name="arch" type="xml">
+	          <tree string='Request Expenses' editable="top">
+	            <field name="name"/> 
+	            <field name="expense"/> 
+	            <field name="amount" sum="Total"/> 
+	          </tree>
+	      </field>
+	    </record>
+
+	    <record id="request_expense_search" model="ir.ui.view">
+	       <field name="name">filter requests</field>
+	       <field name="model">hms.request.expense</field>
+	       <field name="arch" type="xml">
+	          <search string="Search Expenses">
+	              <separator orientation="vertical"/>
+	              <field name="name" string="Request #"/>
+	              <field name="request_time" string="Period"/>
+	              <separator/>
+	              <filter string="Today"  name="today" domain="[('request_time', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('request_time', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+	              <filter name="request_time" string="Date" date="request_time"/>
+	              <group expand="0" string="Group By..." colspan="11" col="11">
+	                  <filter string="Request Date" name="request_time" context="{'group_by': 'request_time'}"/>
+	              </group>
+	          </search>
+	        </field>
+	      </record>
+
+	    <record id="hms_expense_action" model="ir.actions.act_window">
+	      <field name="name">Expenses</field>
+	      <field name="res_model">hms.request.expense</field>
+	      <field name="view_mode">tree</field>
+	      <field name="domain">[]</field>
+	      <field name="context">{"search_default_today":1}</field>
+	      <field name="view_id" eval="False"/>
+	      <field name="help" type="html">
+	        <p class="o_view_nocontent_smiling_face">
+	          Request expense.
+	        </p>
+	      </field>
+	    </record>
+	    <record model="ir.sequence" id="request_expense_seq">
+	      <field name="name">Request expenses seqe</field>
+	      <field name="code">hms.request.expense</field>
+	      <!-- <field name="prefix">%(day)s/</field> -->
+	      <field name="use_date_range">True</field>
+	      <field name="company_id" eval="False" />
+	    </record>
+
+	    <menuitem 
+      	  name="Expenses" 
+	      id="menu_expense" 
+	      parent="config_menu" 
+	      action="action_expense"/>
+
+	    <menuitem
+	      id="request_expense_menu"
+	      name="Expenses"
+	      parent = "clinic_menu"
+	      sequence="2"
+	      action="hms_expense_action"/>
+  	</data>
+</odoo>

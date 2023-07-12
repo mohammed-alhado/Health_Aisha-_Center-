@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_payment_wizard" model="ir.ui.view">
+           <field name="name">payment.wizard</field>
+           <field name="model">payment.wizard</field>
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+               <form string="Register Payment">
+                    <group>
+                        <field name="invoice_id" invisible="1"/>
+                        <field name="payment_account"/>
+                        <field name="amount" string="Amount"/>
+                        <field name="amount_due" string="Amount Due"/>
+                        <field name="note" string="Notes"/>
+                        <field name="line_account" attrs="{'invisible':[('amount','>','5')]}"/>
+                    </group>
+                    <footer>
+                        <button name="validate_payment" string="Validate" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                    </footer>
+               </form>
+           </field>
+        </record>
+
+    
+    </data>
+</odoo>

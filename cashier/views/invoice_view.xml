@@ -1,0 +1,146 @@
+<odoo>
+    <data>
+        <record id="cashier_invoice_form" model="ir.ui.view">
+            <field name="name">Patient invoice</field>
+            <field name="model">cashier.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Invoices">
+                    <header>
+                        <button name="register_payment" string="Register Payment" type="object" class="oe_highlight" attrs="{'invisible': [('amount_due', '=', 0)]}"/>
+                       <!--  <button name="register_payment_down" string="Register Payment from down payment" type="object" class="oe_highlight" attrs="{'invisible': [('amount_due', '=', 0)]}"/> -->
+                        <!-- <button name="register_cheque" string="Register Cheque Payment" type="object" class="oe_highlight" attrs="{'invisible': [('amount_due', '=', 0)]}"/> -->
+                        <button name="refund" string="Refund" type="object" class="oe_highlight" attrs="{'invisible': [('paid_amount', '=', 0)]}"/>
+                        <button name="print_cashier_invoice" string="Print Invoice" type="object"
+                            attrs="{'invisible': [('invoice_state', '=', 'draft')]}"/>
+                        <field name="invoice_state" widget="statusbar"  statusbar_visible="draft,in_payment,paid"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Paid" attrs="{'invisible': [('invoice_state', 'in', ['draft','in_payment','refunded'])]}" bg_color="bg-success"/>
+                        <widget name="web_ribbon" title="In Payment" attrs="{'invisible': [('invoice_state', '!=', 'in_payment')]}" bg_color="bg-warning"/>
+                        <widget name="web_ribbon" title="Refunded" attrs="{'invisible': [('invoice_state', '!=', 'refunded')]}" bg_color="bg-danger"/>
+                        <div class="oe_title">
+                           <label for="name" string="Invoice Number #"/>
+                            <h1>
+                                <field name="name" readonly="True"/>
+                            </h1>
+                        </div>
+                        
+
+                        <group>
+                            <group>
+                              <field name="patient"/>
+                              <field name="invoice_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="invoice_line_page" string="Invoice Lines">
+                                <field name="invoice_line">
+                                    <tree editable="bottom">
+                                        <field name="item_id"/>
+                                        <field name="price" force_save="1"/>
+                                        <field name="qty"/>
+                                        <field name="subtotal" force_save="1"/>
+                                        <field name="account_id" force_save="1"/>
+                                        <field name="paid_amount"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right"> 
+                                    <field name="total_amount"/>
+                                    <field name="paid_amount" class="oe_subtotal_footer_separator"/>
+                                    <field name="amount_due" class="oe_subtotal_footer_separator" force_save="1"/>
+                                </group>
+                            </page>
+                            
+                            <page name="note" string="Notes">
+                                <group>
+                                    <field name="note"/>
+                                </group>
+                            </page>
+                            <page name="payment_line_page" string="Payment Lines">
+                                <field name="payment_line" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="payment_account"/>
+                                        <field name="payment_time"/>
+                                        <field name="cashier"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                    <div class="oe_chatter">         
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="cashier_invoice_tree" model="ir.ui.view">
+            <field name="name">Patients Invoices list</field>
+            <field name="model">cashier.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Invoices" decoration-muted="invoice_state=='draft'" decoration-info="invoice_state=='in_payment'" decoration-success="invoice_state=='paid'" decoration-danger="invoice_state=='refunded'">
+                    <field name="name"/>
+                    <field name="patient"/>
+                    <field name="invoice_date"/>
+                    <field name="total_amount"/>
+                    <field name="amount_due"/>
+                    <field name="paid_amount"/>
+                    <field name="invoice_state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="cashier_invoice_search" model="ir.ui.view">
+            <field name="name">filter cashier invoices</field>
+            <field name="model">cashier.invoice</field>
+            <field name="arch" type="xml">
+                <search string="Search Invoices">
+                    <separator orientation="vertical"/>
+                    <field name="name" string="Invoice #"/>
+                    <field name="patient" string="Patient"/>
+                    <field name="invoice_date" string="Period"/>
+                    <separator/>
+                    <filter name="invoice_date" string="Date" date="invoice_date"/>
+                    <separator/>
+                    <group expand="0" string="Group By..." colspan="11" col="11">
+                        <filter string="State" name="group_state" domain="[]" context="{'group_by':'invoice_state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.sequence" id="seq_commitment">
+            <field name="name">Patient Invoice seqe</field>
+            <field name="code">cashier.invoice</field>
+            <field name="prefix">P.INV/%(range_year)s/</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False" />
+        </record>   
+
+       <record id="patient_invoice_action" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cashier.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create First patient invoice
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+          id="cashier_menu"
+          name="Cashier"/>   
+        <menuitem 
+          name="Invoices"
+          id="invoice_menu_child" 
+          parent="cashier_menu"
+          action="patient_invoice_action"/>
+    </data>
+</odoo>

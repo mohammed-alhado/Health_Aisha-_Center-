@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cashier_invoice,cashier.invoice,model_cashier_invoice,,1,1,1,1
+access_invoice_line,invoice.line,model_invoice_line,,1,1,1,1
+access_cashier_payment,cashier.payment,model_cashier_payment,,1,1,1,1
+access_payment_account,payment.account,model_payment_account,,1,1,1,1
+access_pcashier_session,cashier.session,model_cashier_session,,1,1,1,1
+access_session_account,session.account,model_session_account,,1,1,1,1
+access_session_journal,session.journal,model_session_journal,,1,1,1,1
+access_cashier_cheque,cashier.cheque,model_cashier_cheque,,1,1,1,1
+access_cheque_account,cheque.account,model_cheque_account,,1,1,1,1
+access_cashier_downpayment,cashier.downpayment,model_cashier_downpayment,,1,1,1,1
+access_downpayment_line,downpayment.line,model_downpayment_line,,1,1,1,1

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Invoicedashboard">
+        <div class="accounts-dashboard-wrap">
+            <div class="o_dashboards col-xs-12 col-sm-12 col-lg-12 col-md-12" style="background-color: #e1e1e1;overflow: scroll; !important; ">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                <div class="dash-header">
+                                    <h1 class="custom-h1 dashboard-h1">Dashboard </h1>
+                                   <!--  <input type="checkbox" style="display:none" data-toggle="toggle" data-on="" data-off="">
+                                    <input type="checkbox" id="toggle-two"></input>
+                                    </input> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <div class="">
+                        <div class="row account-details" style="margin:0px">
+                            <div class="col-md-3">
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">clinic income</div>
+                                        <div id="monthly_invoice">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span style="font-wight:bold" id="clinic_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-3">
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">Image income</div>
+                                        <div id="monthly_invoice">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="image_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-3">
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">surgery service</div>
+                                        <div id="monthly_invoice">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="surgery_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="col-md-3">
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">Dental income</div>
+                                        <div id="monthly_invoice">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="dental_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-3">
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">Lab income</div>
+                                        <div id="monthly_invoice">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="lab_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--      Total Income       -->
+                            <div class="col-md-3">
+                                <div class="tile wide invoice box-2">
+                                    <div class="header">
+                                        <div class="main-title">Total Income</div>
+                                        <div id="monthly_income">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--              Total Expense              -->
+                            <div class="col-md-3">
+                                <div class="tile wide invoice box-3">
+                                    <div class="header">
+                                        <div class="main-title">Total Expenses</div>
+                                        <div id="monthly_expense">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_expnese_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--            net            -->
+                            <div class="col-md-3">
+                                <div class="tile wide invoice box-4">
+                                    <div class="header">
+                                        <div class="main-title">Net</div>
+                                        <div id="monthly_unreconciled">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="net_income_today" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
